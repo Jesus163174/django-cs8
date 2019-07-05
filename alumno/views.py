@@ -18,9 +18,19 @@ from empleado.serializers import EmpleadoSerializer
 
 from alumno.models import Alumno
 from alumno.serializers import AlumnoSerializer
+
+from alumno.models import Profesor
+from alumno.serializers import ProfesorSerializer
 class AlumnosList(APIView):
     
     def get(self, request, format=None):
         queryset =  Alumno.objects.filter(status=0)
         serializer = AlumnoSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+class ProfesorList(APIView):
+    
+    def get(self, request, format=None):
+        queryset =  Profesor.objects.filter(status=0)
+        serializer = ProfesorSerializer(queryset, many=True)
         return Response(serializer.data)

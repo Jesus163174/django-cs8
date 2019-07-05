@@ -7,5 +7,6 @@ from rest_framework import routers, serializers, viewsets
 from alumno import views
 
 urlpatterns = [
-    #re_path(r'^alumnos/$', views.NegociosList.as_view() ),
+    re_path(r'^alumnos/$', views.AlumnosList.as_view() ),
+    re_path(r'^profesores/$', views.ProfesorList.as_view() ),
 ]
