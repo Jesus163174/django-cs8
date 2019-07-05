@@ -13,6 +13,9 @@ from django.shortcuts import get_object_or_404
 from django.http import Http404
 
 
+from empleado.models import Empleado
+from empleado.serializers import EmpleadoSerializer
+
 from empleado.models import Negocio
 from empleado.serializers import NegocioSerializer
 
@@ -37,4 +40,11 @@ class NegocioDetail(APIView):
             return Response(serializer.data)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class EmpleadosList(APIView):
+
+    def get(self, request, format=None):
+        queryset = Empleado.objects.filter(status=0)
+        serializer = EmpleadoSerializer(queryset, many=True)
+        return Response(serializer.data)
 

@@ -8,5 +8,7 @@ from empleado import views
 
 urlpatterns = [
     re_path(r'^negocios/$', views.NegociosList.as_view() ),
-    #re_path(r'^sucursal/(?P<id>\d+)$', views.SucursalDetail.as_view() ),
+    re_path(r'^negocio/(?P<id>\d+)$', views.NegocioDetail.as_view() ),
+
+    re_path(r'^empleados/$', views.EmpleadosList.as_view() ),
 ]

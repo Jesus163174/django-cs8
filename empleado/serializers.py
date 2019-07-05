@@ -3,10 +3,10 @@ from empleado.models import Negocio
 from empleado.models import Empleado
 
 class EmpleadoSerializer(serializers.ModelSerializer):
-    #nameSucursal = serializers.ReadOnlyField(source='sucursal.name')
+    negocio = serializers.ReadOnlyField(source='negocio.name')
     class Meta:
         model = Empleado
-        fields = ('name')
+        fields = ('name','negocio')
 
 class NegocioSerializer(serializers.ModelSerializer):
     empleados = serializers.SlugRelatedField(
