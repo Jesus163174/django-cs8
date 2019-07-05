@@ -2,8 +2,10 @@ from rest_framework import routers, serializers, viewsets
 from perfil.models import Perfil
 from perfil.models import Sex
 from perfil.models import City
+ 
 
 class PerfilSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
     nameCity = serializers.ReadOnlyField(source='city.name')
     stateCity = serializers.ReadOnlyField(source='city.state')
     nameSex  = serializers.ReadOnlyField(source='sex.name')

@@ -7,13 +7,13 @@ class City(models.Model):
     status = models.BooleanField(default=True)
     colony = models.CharField(max_length=50, blank=True)
     class Meta:
-        db_table = "city"
+        db_table = "cities"
 
 class Sex(models.Model):
 
     name = models.CharField(max_length=10, blank=True)
     class Meta:
-        db_table = "sex"
+        db_table = "sexs"
 
 class Perfil(models.Model):
     user        = models.OneToOneField(User, on_delete=models.CASCADE)
