@@ -26,6 +26,14 @@ class NegociosList(APIView):
         serializer = NegocioSerializer(queryset, many=True)
         return Response(serializer.data)
 
+    def post(self, request, format=None):
+        serializer = NegocioSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
 class NegocioDetail(APIView):
     def get_object(self, id):
         try:
@@ -47,4 +55,13 @@ class EmpleadosList(APIView):
         queryset = Empleado.objects.filter(status=0)
         serializer = EmpleadoSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+    def post(self, request, format=None):
+        #return Response(request.data)
+        serializer = EmpleadoSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 

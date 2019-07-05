@@ -18,6 +18,15 @@ from perfil.serializers import PerfilSerializer
 
 
 class Profile(APIView):
+
+    def post(self, request, format=None):
+        serializer = PerfilSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
     def get_object(self, id):
         try:
             return Perfil.objects.get(user=id)

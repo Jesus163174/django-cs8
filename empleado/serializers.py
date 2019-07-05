@@ -6,7 +6,7 @@ class EmpleadoSerializer(serializers.ModelSerializer):
     negocio = serializers.ReadOnlyField(source='negocio.name')
     class Meta:
         model = Empleado
-        fields = ('name','negocio')
+        fields = ('__all__')
 
 class NegocioSerializer(serializers.ModelSerializer):
     empleados = serializers.SlugRelatedField(

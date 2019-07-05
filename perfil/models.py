@@ -24,6 +24,7 @@ class Perfil(models.Model):
     city        = models.OneToOneField(City , on_delete=models.CASCADE)
     phone       = models.CharField(max_length=10, null=False)
     sex         = models.OneToOneField(Sex, on_delete=models.CASCADE, null=True)
+    img = models.ImageField(upload_to='media/', null=True)
 
     class Meta:
         db_table = "Profile"

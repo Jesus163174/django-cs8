@@ -13,9 +13,9 @@ class AlumnoSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Alumno
-        fields = ('name','matricula','profesores')
+        fields = ('__all__')
 class ProfesorSerializer(serializers.ModelSerializer):
     alumnos_list = AlumnoSerializer(many=True, read_only=True)
     class Meta:
         model = Profesor
-        fields = ('name','alumnos_list','completo','salario')
+        fields = ('__all__')

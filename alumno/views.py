@@ -23,6 +23,14 @@ from alumno.models import Profesor
 from alumno.serializers import ProfesorSerializer
 class AlumnosList(APIView):
     
+    def post(self, request, format=None):
+        serializer = AlumnoSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
     def get(self, request, format=None):
         queryset =  Alumno.objects.filter(status=0)
         serializer = AlumnoSerializer(queryset, many=True)
@@ -34,3 +42,12 @@ class ProfesorList(APIView):
         queryset =  Profesor.objects.filter(status=0)
         serializer = ProfesorSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+
+    def post(self, request, format=None):
+        serializer = ProfesorSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            datas = serializer.data
+            return Response(datas)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
