@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'servicio',
     'login',
     'rest_framework.authtoken',
-    'prueba'
+    'prueba',
+    'perfil',
 ]
 
 REST_FRAMEWORK = {
