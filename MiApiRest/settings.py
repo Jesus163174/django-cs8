@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'prueba',
     'perfil',
     'sucursal',
-    'empleado'
+    'empleado',
+    'alumno'
 ]
 
 REST_FRAMEWORK = {
